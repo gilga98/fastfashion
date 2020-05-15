@@ -34,3 +34,13 @@ class DressCreateList(generics.ListCreateAPIView):
 class DressReadUpdate(generics.RetrieveUpdateDestroyAPIView):
     queryset = Dress.objects.all()
     serializer_class = DressSerializer
+
+
+class ListTops(generics.ListAPIView):
+    # must set id 1 to tops in db
+    queryset = Dress.objects.filter(prediction__id=1)
+    serializer_class = DressSerializer
+
+class ListBottoms(generics.ListAPIView):
+    queryset = Dress.objects.filter(prediction__id=2)
+    serializer_class = DressSerializer
